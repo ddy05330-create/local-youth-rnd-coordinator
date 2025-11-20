@@ -1,0 +1,334 @@
+import React, { useState } from 'react';
+import { ChevronRight, Users, TrendingUp, FileText, Award, MapPin, CheckCircle } from 'lucide-react';
+
+export default function LandingPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    region: ''
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 3000);
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  return (
+    <div className="min-h-screen bg-white" style={{ fontFamily: "'Noto Sans KR', sans-serif", lineHeight: '1.6' }}>
+      {/* Navigation */}
+      <nav className="bg-white shadow-sm sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="text-2xl font-bold" style={{ color: '#003366' }}>
+            지역창직센터
+          </div>
+          <button 
+            className="px-6 py-2 rounded-md text-white font-medium transition-all hover:opacity-90"
+            style={{ backgroundColor: '#003366' }}
+          >
+            상담 신청
+          </button>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-20 pb-24 px-6" style={{ backgroundColor: '#f8f9fa' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="text-left">
+              <div 
+                className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6"
+                style={{ backgroundColor: '#A8CC33', color: '#003366' }}
+              >
+                지역과 함께 성장하는 창업 생태계
+              </div>
+              <h1 className="text-5xl font-bold mb-6" style={{ color: '#003366', lineHeight: '1.3' }}>
+                당신의 아이디어를<br />
+                <span style={{ color: '#A8CC33' }}>지역 기반 비즈니스</span>로
+              </h1>
+              <p className="text-xl mb-8" style={{ color: '#666', lineHeight: '1.8' }}>
+                R&D 컨설팅부터 국책과제 지원까지<br />
+                체계적인 전략으로 지역 정주형 창직을 완성합니다
+              </p>
+              <div className="flex gap-4">
+                <button 
+                  className="px-8 py-4 rounded-md text-white font-bold text-lg transition-all hover:shadow-lg flex items-center gap-2"
+                  style={{ backgroundColor: '#003366' }}
+                >
+                  무료 상담 시작하기
+                  <ChevronRight size={20} />
+                </button>
+                <button 
+                  className="px-8 py-4 rounded-md font-bold text-lg transition-all hover:bg-gray-100"
+                  style={{ border: '2px solid #003366', color: '#003366' }}
+                >
+                  서비스 둘러보기
+                </button>
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl p-12 shadow-xl">
+              <div className="text-center">
+                <Users size={80} className="mx-auto mb-6" style={{ color: '#003366' }} />
+                <p className="text-lg font-medium" style={{ color: '#003366' }}>
+                  지역과 청년이 함께 만드는<br />
+                  <span className="text-2xl font-bold" style={{ color: '#A8CC33' }}>지속 가능한 미래</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Numbers Section */}
+      <section className="py-16 px-6" style={{ backgroundColor: '#003366' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 text-center text-white">
+            <div>
+              <div className="text-5xl font-bold mb-2" style={{ color: '#A8CC33' }}>120+</div>
+              <p className="text-lg">지원 기업</p>
+            </div>
+            <div>
+              <div className="text-5xl font-bold mb-2" style={{ color: '#A8CC33' }}>85%</div>
+              <p className="text-lg">과제 선정률</p>
+            </div>
+            <div>
+              <div className="text-5xl font-bold mb-2" style={{ color: '#A8CC33' }}>200억+</div>
+              <p className="text-lg">누적 지원금</p>
+            </div>
+            <div>
+              <div className="text-5xl font-bold mb-2" style={{ color: '#A8CC33' }}>15개</div>
+              <p className="text-lg">협력 지역</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4" style={{ color: '#003366' }}>
+              전문가와 함께하는 창직 여정
+            </h2>
+            <p className="text-xl" style={{ color: '#666' }}>
+              체계적인 프로세스로 당신의 성공을 지원합니다
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <FileText size={48} />,
+                title: 'R&D 전략 컨설팅',
+                desc: '기술 개발부터 사업화까지 전 과정을 아우르는 맞춤형 R&D 전략을 수립합니다'
+              },
+              {
+                icon: <Award size={48} />,
+                title: '국책과제 지원',
+                desc: '정부 지원사업 선정을 위한 사업계획서 작성부터 PT 준비까지 전문적으로 지원합니다'
+              },
+              {
+                icon: <MapPin size={48} />,
+                title: '지역 네트워크 연계',
+                desc: '지역 산업 생태계와의 연결을 통해 실질적인 비즈니스 기회를 창출합니다'
+              }
+            ].map((service, idx) => (
+              <div 
+                key={idx}
+                className="p-8 rounded-xl border-2 hover:shadow-xl transition-all cursor-pointer group"
+                style={{ borderColor: '#e5e5e5' }}
+              >
+                <div className="mb-6 group-hover:scale-110 transition-transform" style={{ color: '#003366' }}>
+                  {service.icon}
+                </div>
+                <h3 className="text-2xl font-bold mb-4" style={{ color: '#003366' }}>
+                  {service.title}
+                </h3>
+                <p className="text-lg" style={{ color: '#666' }}>
+                  {service.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-24 px-6" style={{ backgroundColor: '#f8f9fa' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4" style={{ color: '#003366' }}>
+              4단계 지원 프로세스
+            </h2>
+            <p className="text-xl" style={{ color: '#666' }}>
+              체계적인 단계별 지원으로 확실한 성과를 만듭니다
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              { step: '01', title: '초기 상담', desc: '아이디어 진단 및 방향성 설정' },
+              { step: '02', title: '전략 수립', desc: 'R&D 로드맵 및 사업 전략 개발' },
+              { step: '03', title: '과제 신청', desc: '국책과제 지원서 작성 및 제출' },
+              { step: '04', title: '사업화 지원', desc: '선정 후 사업 실행 및 성과 관리' }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-xl shadow-md">
+                <div 
+                  className="text-6xl font-bold mb-4 opacity-20"
+                  style={{ color: '#A8CC33' }}
+                >
+                  {item.step}
+                </div>
+                <h3 className="text-xl font-bold mb-3" style={{ color: '#003366' }}>
+                  {item.title}
+                </h3>
+                <p style={{ color: '#666' }}>
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl font-bold mb-6" style={{ color: '#003366' }}>
+                왜 지역창직센터인가?
+              </h2>
+              <div className="space-y-6">
+                {[
+                  '15년 이상의 R&D 컨설팅 경험을 보유한 전문가 팀',
+                  '평균 85% 이상의 높은 국책과제 선정률',
+                  '지역별 맞춤형 산업 생태계 네트워크 보유',
+                  '창업부터 성장까지 전 단계 원스톱 지원',
+                  '실전 중심의 실무 코칭 및 멘토링'
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-4">
+                    <CheckCircle size={24} style={{ color: '#A8CC33', flexShrink: 0, marginTop: '2px' }} />
+                    <p className="text-lg" style={{ color: '#333' }}>{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-blue-900 to-green-800 rounded-2xl p-12 text-white">
+              <TrendingUp size={64} className="mb-6" />
+              <h3 className="text-3xl font-bold mb-4">
+                지역에 뿌리내린<br />
+                지속 가능한 성장
+              </h3>
+              <p className="text-lg opacity-90">
+                단순한 창업 지원을 넘어, 지역 경제와 함께 성장하는 비즈니스 모델을 만들어갑니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Form Section */}
+      <section className="py-24 px-6" style={{ backgroundColor: '#003366' }}>
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-6 text-white">
+            지금 바로 시작하세요
+          </h2>
+          <p className="text-xl mb-12 text-white opacity-90">
+            전문가와의 무료 상담으로 당신의 창직 여정을 시작하세요
+          </p>
+          
+          {submitted ? (
+            <div className="bg-white rounded-xl p-12">
+              <CheckCircle size={64} className="mx-auto mb-4" style={{ color: '#A8CC33' }} />
+              <h3 className="text-2xl font-bold mb-2" style={{ color: '#003366' }}>
+                신청이 완료되었습니다!
+              </h3>
+              <p className="text-lg" style={{ color: '#666' }}>
+                담당자가 2영업일 내에 연락드리겠습니다.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="bg-white rounded-xl p-12 shadow-2xl">
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="이름"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="px-6 py-4 border-2 rounded-lg text-lg"
+                  style={{ borderColor: '#e5e5e5' }}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="이메일"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="px-6 py-4 border-2 rounded-lg text-lg"
+                  style={{ borderColor: '#e5e5e5' }}
+                />
+              </div>
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="연락처"
+                  required
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="px-6 py-4 border-2 rounded-lg text-lg"
+                  style={{ borderColor: '#e5e5e5' }}
+                />
+                <input
+                  type="text"
+                  name="region"
+                  placeholder="지역 (예: 서울, 부산)"
+                  required
+                  value={formData.region}
+                  onChange={handleChange}
+                  className="px-6 py-4 border-2 rounded-lg text-lg"
+                  style={{ borderColor: '#e5e5e5' }}
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full py-5 rounded-lg text-white font-bold text-xl transition-all hover:shadow-xl"
+                style={{ backgroundColor: '#A8CC33' }}
+              >
+                무료 상담 신청하기
+              </button>
+            </form>
+          )}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-6 bg-gray-900 text-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="text-2xl font-bold mb-4" style={{ color: '#A8CC33' }}>
+            지역창직센터
+          </div>
+          <p className="mb-4 opacity-80">
+            지역과 청년이 함께 성장하는 창업 생태계
+          </p>
+          <p className="text-sm opacity-60">
+            © 2024 지역창직센터. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
